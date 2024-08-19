@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+template <class T>
+void print_v(vector<T> &v) 
+{ 
+    cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; 
+}
+ll gcd(ll a,ll b) { if (b==0) return a; return gcd(b, a%b); }
+ll lcm(ll a,ll b) { return a/gcd(a,b)*b; }
+string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a' && a[i]<='z') a[i]-='a'-'A'; return a; }
+string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A' && a[i]<='Z') a[i]+='a'-'A'; return a; }
+bool prime(ll a) { if (a==1) return 0; for (int i=2;i<=round(sqrt(a));++i) if (a%i==0) return 0; return 1; }
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int index=0;
+        int ways=1;
+        string s1,s2,ans="";
+        cin>>s1>>s2;
+        for(int i=0;i+1<n;i++)
+        {
+            if(s1[i+1]<=s2[i])
+            {
+                index=i+1;
+                if(s1[i+1]<s2[i])
+                    ways=1;
+                else
+                    ways++;
+            }
+            else
+                break;
+
+        }
+        for(int i=0;i<=index;i++)
+            ans+=s1[i];
+        for(int i=index;i<n;i++)
+            ans+=s2[i];
+        cout<<ans<<endl;
+        cout<<ways<<endl;
+    }
+}

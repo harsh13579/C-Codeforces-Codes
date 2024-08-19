@@ -1,0 +1,9 @@
+t=int(input())
+while(t>0):
+    t-=1
+    n=int(input())
+    s=input()
+    m=s.count("map")
+    p=s.count("pie")
+    mp=s.count("mapie")
+    print(m+p-mp)
